@@ -117,7 +117,7 @@ for n=0:N-1
 end
 
 savefile=[num2str(ID(num)) '.mat'];
-save(savefile);
+save(savefile,'Cnm','Snm');
 
 %% Check the results
 % use outline files
@@ -183,7 +183,7 @@ save(savefile);
 
 
 
-%% Tests and Debugs
+%% Validating the transformation from spherical to cartesian
 % clc
 % 
 % x=1;
