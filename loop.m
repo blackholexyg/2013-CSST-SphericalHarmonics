@@ -1,8 +1,12 @@
-global ID;
 global num;
+global filepath;
+global filename;
+global postfix;
 
-ID=[0 1 2 42 43 44 78 79 80 81 82 83 120 121 122 138 139 140];
+filepath='~/Data/VirusTest/';
+filename={'T9_3','T16_3','T25_3','T36_3'};
+postfix='.vtk';
 
-for num=1:length(ID)
+for num=1:length(filename)
     SHMain;        
 end

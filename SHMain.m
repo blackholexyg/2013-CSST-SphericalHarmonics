@@ -6,17 +6,16 @@
 % initialization
 clc,clear
 
-global ID;
 global num;
-
-ID(num) 
+global postfix;
+global filename;
+global filepath;
 
 % the file path and name 
-filepath='';
-filename='T9_3_iter';
-postfix='.vtk';
 
-fid=fopen([filepath filename num2str(ID(num)) postfix],'r');
+fid=fopen([filepath filename{num} postfix],'r')
+
+[filepath filename{num} postfix]
 
 % read file
 info_version=fgetl(fid);
@@ -116,7 +115,7 @@ for n=0:N-1
     end
 end
 
-savefile=[num2str(ID(num)) '.mat'];
+savefile=[ filename{num} '.mat'];
 save(savefile,'Cnm','Snm');
 
 %% Check the results
