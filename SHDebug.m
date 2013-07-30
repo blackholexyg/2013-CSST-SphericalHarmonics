@@ -1,15 +1,21 @@
-%clc;
+clc;
 clear;
 
-global num;
 global filename;
 global filepath;
 
 %% Debug Here
 
-filename{num}  %#ok<NOPTS>
+filepath='~/Data/VirusTest/';
+filename='T16_3';
+load([filepath filename '_coordinates']);
+load([filepath filename '_expand']);
+A=SHSum(Cnm,Snm,theta,lambda)-r;
 
-load([filepath filename{num} '_coordinates']);
+B=SHSum(Cnm(1:10),Snm(1:10),theta,lambda)-r;
+
+
+Z=SHSum(Cnm(1),Snm(1),theta,lambda)-r;
 
 
 %% Check the results
