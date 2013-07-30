@@ -9,8 +9,9 @@ global filepath;
 % calculate the coefficients for Cnm and Snm
 
 filename=filelist{num}  %#ok<NOPTS>
+postfix='_coordinates';
 
-load([filepath filename '_coordinates']);
+load([filepath filename postfix]);
 
 % Degrees to be expanded
 N=10;

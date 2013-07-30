@@ -5,7 +5,19 @@ global filepath;
 global filelist;
 
 filepath='~/Data/VirusTest/';
-filelist={'T9_3','T16_3','T25_3','T36_3'};
+
+% get filelist
+fid=fopen([filepath 'filelist.txt']);
+
+i=1;
+tline = fgetl(fid);
+while ischar(tline)
+    filelist{i}=tline;
+    tline = fgetl(fid);
+    i=i+1;
+end
+
+fclose(fid);
 
 for num=1:length(filelist)
     % Do loop operations
@@ -17,5 +29,8 @@ for num=1:length(filelist)
     % SHExpand;
     
     % Posprocessing:
-    SHPlot;
+    % SHPlot;
+    
+    % Other:
+    % SHRotate;
 end
