@@ -9,7 +9,7 @@ global filepath;
 % calculate the coefficients for Cnm and Snm
 
 filename=filelist{num}  %#ok<NOPTS>
-postfix='_coordinates';
+postfix='_rotated';
 
 load([filepath filename postfix]);
 
@@ -63,5 +63,5 @@ for n=0:N-1
     end
 end
 
-savefile=[ filepath filename '_expand' '.mat'];
+savefile=[ filepath filename '_expand2' '.mat'];
 save(savefile,'Cnm','Snm');

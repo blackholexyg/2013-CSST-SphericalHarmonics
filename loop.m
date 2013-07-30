@@ -26,7 +26,7 @@ for num=1:length(filelist)
     % SHReadVtk;
     
     % Calculating:
-    % SHExpand;
+    SHExpand;
     
     % Posprocessing:
     % SHPlot;
