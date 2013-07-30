@@ -18,7 +18,7 @@ for i=1:NUM_NODES
     r(i)=cos(test_m*lambda(i) ) .*SHPnm(test_n,test_m,theta(i) );
 end
 
-[Cnm,Snm]=SHExpand(x,y,z,r,theta,lambda,NUM_TRI,TRI,8);
+[Cnm,Snm]=SHExpand(x,y,z,r,theta,lambda,NUM_TRI,TRI,8)
 
 savefile=[ temppath filename '_test' '.mat'];
 save(savefile,'Cnm','Snm');
