@@ -1,12 +1,21 @@
+clc,clear;
+
 global num;
 global filepath;
-global filename;
-global postfix;
+global filelist;
 
 filepath='~/Data/VirusTest/';
-filename={'T9_3','T16_3','T25_3','T36_3'};
-postfix='.vtk';
+filelist={'T9_3','T16_3','T25_3','T36_3'};
 
-for num=1:length(filename)
-    SHMain;        
+for num=1:length(filelist)
+    % Do loop operations
+    
+    % Preprocessing:
+    % SHReadVtk;
+    
+    % Calculating:
+    % SHExpand;
+    
+    % Posprocessing:
+    SHPlot;
 end
