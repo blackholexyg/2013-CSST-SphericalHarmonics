@@ -4,20 +4,82 @@ clear;
 global filename;
 global filepath;
 
-%% Debug Here
-
 filepath='~/Data/VirusTest/';
-filename='T16_3';
+filename='T9_3';
 load([filepath filename '_coordinates']);
-load([filepath filename '_expand']);
-A=SHSum(Cnm,Snm,theta,lambda)-r;
 
-B=SHSum(Cnm(1:10),Snm(1:10),theta,lambda)-r;
+%% Debug Here
+r=zeros(size(lambda));
+test_n=3;
+test_m=1;
+
+for i=1:NUM_NODES
+    r(i)=cos(test_m*lambda(i) ) .*SHPnm(test_n,test_m,theta(i) );
+end
+
+[Cnm,Snm]=SHExpand(x,y,z,r,theta,lambda,NUM_TRI,TRI,8);
+
+%% plot the shape
+% 
+% theta=0:pi/50:pi;
+% phi=0:pi/50:2*pi;
+% [THETA,PHI]=meshgrid(theta,phi);
+% R=zeros(size(THETA));
+% n=2;
+% m=1;
+% 
+% for i=1:size(THETA,1)
+%     for j=1:size(THETA,2)
+%         R(i,j)=cos(m*PHI(i,j)) .*SHPnm(n,m,THETA(i,j) ) ;
+%     end
+% end
+% 
+% X=zeros(size(THETA));
+% Y=zeros(size(THETA));
+% Z=zeros(size(THETA));
+% 
+% for i=1:size(THETA,1)
+%     for j=1:size(THETA,2)
+%         Z(i,j)=R(i,j)*cos(THETA(i,j));
+%         X(i,j)=R(i,j)*sin(THETA(i,j))*cos(PHI(i,j)) ;
+%         Y(i,j)=R(i,j)*sin(THETA(i,j))*sin(PHI(i,j)) ;
+%     end
+% end
+% 
+% scrsz = get(0,'ScreenSize');
+% figure('Color',[1 1 1],'renderer','zbuffer', 'Position',[scrsz(3)/2+200 scrsz(4)/2+500 scrsz(3)/4 scrsz(4)/2])
+% mesh(X,Y,Z)
+% axis equal
+% axis([-2 2 -2 2 -2 2])
+
+%% 7/29
+% filepath='~/Data/VirusTest/';
+% filename='T9_3';
+% 
+% figure(1)
+% load([filepath filename '_coordinates']);
+% plot3(x,y,z,'.');
+% axis equal
+% axis([-2 2 -2 2 -2 2])
+% mean(x.*x+y.*y+z.*z)
+% 
+% figure(2)
+% load([filepath filename '_rotated']);
+% plot3(x,y,z,'.');
+% axis equal
+% axis([-2 2 -2 2 -2 2])
+% mean(x.*x+y.*y+z.*z)
 
 
-Z=SHSum(Cnm(1),Snm(1),theta,lambda)-r;
+% load([filepath filename '_expand2']);
 
-
+% A=SHSum(Cnm,Snm,theta,lambda)-r;
+% B=SHSum(Cnm(1:6),Snm(1:6),theta,lambda)-r;
+% Z=SHSum(Cnm(1),Snm(1),theta,lambda)-r;
+% 
+% mean(A.*A)
+% mean(B.*B)
+% mean(Z.*Z)
 %% Check the results
 % use outline files
 % 

@@ -1,20 +1,9 @@
-%clc;
-clear;
-
-global num;
-global filelist;
-global filepath;
-
-%% Expand by integration
+function [Cnm, Snm]= SHExpand(x,y,z,r,theta,lambda,NUM_TRI,TRI,N)
+% Expand by integration
 % calculate the coefficients for Cnm and Snm
 
-filename=filelist{num}  %#ok<NOPTS>
-postfix='_rotated';
-
-load([filepath filename postfix]);
 
 % Degrees to be expanded
-N=10;
 Dim=(N+1)*(N)/2;
 Cnm=zeros(Dim,1);
 Snm=zeros(Dim,1);
@@ -22,9 +11,9 @@ Snm=zeros(Dim,1);
 k=0;
 
 for n=0:N-1  
-    n  %#ok<NOPTS>
+    n   %#ok<NOPRT>
     for m=0:n
-        m %#ok<NOPTS>
+        m  %#ok<NOPRT>
         
         k=k+1;
        
@@ -63,5 +52,5 @@ for n=0:N-1
     end
 end
 
-savefile=[ filepath filename '_expand2' '.mat'];
-save(savefile,'Cnm','Snm');
+
+end

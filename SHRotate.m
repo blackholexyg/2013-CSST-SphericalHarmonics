@@ -17,8 +17,8 @@ oldy=y;
 oldz=z;
 
 rotate_theta_x=pi/6;
-y=cos(rotate_theta_x).*y-sin(rotate_theta_x).*z;
-z=sin(rotate_theta_x).*y+cos(rotate_theta_x).*z;
+y=cos(rotate_theta_x).*oldy-sin(rotate_theta_x).*oldz;
+z=sin(rotate_theta_x).*oldy+cos(rotate_theta_x).*oldz;
 
 r=zeros(NUM_NODES,1);
 theta=zeros(NUM_NODES,1);
