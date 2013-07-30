@@ -5,19 +5,24 @@ global filename;
 global filepath;
 
 filepath='~/Data/VirusTest/';
+temppath='~/Data/Temp Results/'
 filename='T9_3';
 load([filepath filename '_coordinates']);
 
 %% Debug Here
 r=zeros(size(lambda));
-test_n=3;
-test_m=1;
+test_n=5;
+test_m=3;
 
 for i=1:NUM_NODES
     r(i)=cos(test_m*lambda(i) ) .*SHPnm(test_n,test_m,theta(i) );
 end
 
 [Cnm,Snm]=SHExpand(x,y,z,r,theta,lambda,NUM_TRI,TRI,8);
+
+savefile=[ temppath filename '_test' '.mat'];
+save(savefile,'Cnm','Snm');
+
 
 %% plot the shape
 % 
