@@ -9,13 +9,13 @@ global filepath;
 %%
 
 filename=filelist{num}  %#ok<NOPTS>
-postfix='_rotated';
+postfix='_rotated2';
 
 load([filepath filename postfix]);
 
 [Cnm,Snm]=SHExpand(x,y,z,r,theta,lambda,NUM_TRI,TRI,10);
 
-savefile=[ filepath filename '_expand2' '.mat'];
+savefile=[ filepath filename '_expand_x_rotate_45' '.mat'];
 save(savefile,'Cnm','Snm');
 
 

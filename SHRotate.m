@@ -16,7 +16,7 @@ oldx=x;
 oldy=y;
 oldz=z;
 
-rotate_theta_x=pi/6;
+rotate_theta_x=pi/4;
 y=cos(rotate_theta_x).*oldy-sin(rotate_theta_x).*oldz;
 z=sin(rotate_theta_x).*oldy+cos(rotate_theta_x).*oldz;
 
@@ -38,5 +38,5 @@ end
 
 
 % save files
-savefile=[ filepath filename '_rotated' '.mat'];
+savefile=[ filepath filename '_rotated2' '.mat'];
 save(savefile,'NUM_NODES','x','y','z','r','theta','lambda','NUM_TRI','TRI');
