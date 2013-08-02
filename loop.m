@@ -19,7 +19,7 @@ end
 
 fclose(fid);
 
-for num=1:length(filelist)
+for num=1:2 %length(filelist)
     % Do loop operations
     
     % Preprocessing:
@@ -32,6 +32,6 @@ for num=1:length(filelist)
     % SHPlot;
     
     % Other:
-    SHRotate;
-    % SHLoop;
+    % SHRotate;
+    SHLoop;
 end
