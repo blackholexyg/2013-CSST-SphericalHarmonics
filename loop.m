@@ -32,6 +32,6 @@ for num=1:length(filelist)
     % SHPlot;
     
     % Other:
-    % SHRotate;
-    SHLoop;
+    SHRotate;
+    % SHLoop;
 end

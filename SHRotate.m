@@ -20,13 +20,13 @@ rotate_theta_x=0;
 y=cos(rotate_theta_x).*oldy-sin(rotate_theta_x).*oldz;
 z=sin(rotate_theta_x).*oldy+cos(rotate_theta_x).*oldz;
 
-rotate_theta_y=pi/4;
-x=cos(rotate_theta_x).*oldx+sin(rotate_theta_x).*oldz;
-z=-sin(rotate_theta_x).*oldx+cos(rotate_theta_x).*oldz;
+rotate_theta_y=0;
+x=cos(rotate_theta_y).*oldx+sin(rotate_theta_y).*oldz;
+z=-sin(rotate_theta_y).*oldx+cos(rotate_theta_y).*oldz;
 
-rotate_theta_z=0;
-x=cos(rotate_theta_x).*oldx-sin(rotate_theta_x).*oldy;
-y=sin(rotate_theta_x).*oldx+cos(rotate_theta_x).*oldy;
+rotate_theta_z=3*pi/4;
+x=cos(rotate_theta_z).*oldx-sin(rotate_theta_z).*oldy;
+y=sin(rotate_theta_z).*oldx+cos(rotate_theta_z).*oldy;
 
 r=zeros(NUM_NODES,1);
 theta=zeros(NUM_NODES,1);
@@ -46,5 +46,5 @@ end
 
 
 % save files
-savefile=[ filepath filename '_rotated_y_45' '.mat'];
+savefile=[ filepath filename '_rotated_z_135' '.mat'];
 save(savefile,'NUM_NODES','x','y','z','r','theta','lambda','NUM_TRI','TRI');
