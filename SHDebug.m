@@ -9,13 +9,20 @@ global filename;
 filepath='~/Data/Debug/';
 filename='T9_3';
 
-SHModifyVtk;
+% SHModifyVtk;
 
-%% Debug Here
+%% Expand Here
 
-[Cnm,Snm]=SHExpand(x,y,z,r,theta,lambda,NUM_TRI,TRI,5);
+inpath = [filepath 'output/'];
+infile = [filename '_new_r'];
+outpath = [filepath 'output/'];
+outfile = [filename '_debug'];
 
-savefile=[ filename '_debug' '.mat'];
+load([inpath infile]);
+
+[Cnm,Snm]=SHExpand(x,y,z,r,theta,lambda,NUM_TRI,TRI,6);
+
+savefile=[ outpath outfile ];
 save(savefile,'Cnm','Snm');
 
 %% Check the transformation
