@@ -1,21 +1,23 @@
 %clc;
-clear;close all;
+clear;
 
-global num;
-global filelist;
 global filepath;
+global filename;
 
+% Set file path and name
+% filepath='~/Data/';
+% filename=filelist{num};
 
-%%
+%% Save Cnm and Snm
 
 filename=filelist{num}  %#ok<NOPTS>
 postfix='_rotated_x_150_y_25';
 
 load([filepath filename postfix]);
 
-[Cnm,Snm]=SHExpand(x,y,z,r,theta,lambda,NUM_TRI,TRI,10);
+[Cnm,Snm]=SHExpand(x,y,z,r,theta,lambda,NUM_TRI,TRI,9);
 
-savefile=[ filepath filename '_expand_rotated_rotated_x_150_y_25' '.mat'];
+savefile=[ filepath filename '_expand_rotated_x_150_y_25' '.mat'];
 save(savefile,'Cnm','Snm');
 
 

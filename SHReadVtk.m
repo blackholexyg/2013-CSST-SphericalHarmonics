@@ -1,18 +1,23 @@
 %clc;
 clear;
 
-global num;
-global filelist;
 global filepath;
+global filename;
+
+% Set file path and name
+% filepath='~/Data/';
+% filename='';
+
+inpath = filepath;
+infile = [filename '.vtk'];
+outpath = [filepath 'output/'];
+outfile = [filename '_original'];
 
 %% Read Coordinates from VTK files
 
 
-% standard output
-filename=filelist{num}  %#ok<NOPTS>
-
 % open file
-fid=fopen([filepath filename '.vtk'],'r');
+fid=fopen([inpath infile],'r');
 
 % read first 4 lines
 info_version=fgetl(fid);
@@ -59,6 +64,6 @@ for i=1:NUM_NODES
 end
 
 
-% save files
-savefile=[ filepath filename '_coordinates' '.mat'];
+%% save files
+savefile=[ outpath outfile];
 save(savefile,'NUM_NODES','x','y','z','r','theta','lambda','NUM_TRI','TRI');

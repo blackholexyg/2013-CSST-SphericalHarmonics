@@ -1,16 +1,36 @@
 clc;
 clear;
 
-global filename;
 global filepath;
+global filename;
 
-filepath='~/Data/VirusTest/';
-temppath='~/Data/Temp Results/';
+% Set file path and name
+
+filepath='~/Data/Debug/';
 filename='T9_3';
-load([filepath filename '_rotated_x_150_y_25']);
 
-mean(r)
+SHModifyVtk;
+
 %% Debug Here
+
+[Cnm,Snm]=SHExpand(x,y,z,r,theta,lambda,NUM_TRI,TRI,5);
+
+savefile=[ filename '_debug' '.mat'];
+save(savefile,'Cnm','Snm');
+
+%% Check the transformation
+% test_x=zeros(size(x));
+% test_y=zeros(size(y));
+% test_z=zeros(size(z));
+% 
+% for i=1:NUM_NODES
+%     test_z(i)=r(i)*cos(theta(i));
+%     test_x(i)=r(i)*sin(theta(i))*cos(lambda(i));
+%     test_y(i)=r(i)*sin(theta(i))*sin(lambda(i));
+% end
+
+%% some debug code
+
 % r=zeros(size(lambda));
 % test_n=5;
 % test_m=3;
@@ -19,10 +39,6 @@ mean(r)
 %     r(i)=cos(test_m*lambda(i) ) .*SHPnm(test_n,test_m,theta(i) );
 % end
 % 
-% [Cnm,Snm]=SHExpand(x,y,z,r,theta,lambda,NUM_TRI,TRI,8)
-% 
-% savefile=[ temppath filename '_test' '.mat'];
-% save(savefile,'Cnm','Snm');
 
 
 %% plot the shape
@@ -31,12 +47,14 @@ mean(r)
 % phi=0:pi/50:2*pi;
 % [THETA,PHI]=meshgrid(theta,phi);
 % R=zeros(size(THETA));
-% n=2;
-% m=1;
+% n=6;
+% m=6;
 % 
 % for i=1:size(THETA,1)
+%     i
 %     for j=1:size(THETA,2)
-%         R(i,j)=cos(m*PHI(i,j)) .*SHPnm(n,m,THETA(i,j) ) ;
+%         R(i,j)=SHSum(Cnm,Snm,THETA(i,j),PHI(i,j) );
+%         % R(i,j)=sin(m*PHI(i,j)) .*SHPnm(n,m,THETA(i,j) ) ;
 %     end
 % end
 % 
@@ -176,7 +194,39 @@ mean(r)
 
 % 
 % for i=1:NUM_NODES
-%     r(i)=1;
+%     r(i)=1;% theta=0:pi/50:pi;
+% phi=0:pi/50:2*pi;
+% [THETA,PHI]=meshgrid(theta,phi);
+% R=zeros(size(THETA));
+% n=6;
+% m=6;
+% 
+% for i=1:size(THETA,1)
+%     i
+%     for j=1:size(THETA,2)
+%         R(i,j)=SHSum(Cnm,Snm,THETA(i,j),PHI(i,j) );
+%         % R(i,j)=sin(m*PHI(i,j)) .*SHPnm(n,m,THETA(i,j) ) ;
+%     end
+% end
+% 
+% X=zeros(size(THETA));
+% Y=zeros(size(THETA));
+% Z=zeros(size(THETA));
+% 
+% for i=1:size(THETA,1)
+%     for j=1:size(THETA,2)
+%         Z(i,j)=R(i,j)*cos(THETA(i,j));
+%         X(i,j)=R(i,j)*sin(THETA(i,j))*cos(PHI(i,j)) ;
+%         Y(i,j)=R(i,j)*sin(THETA(i,j))*sin(PHI(i,j)) ;
+%     end
+% end
+% 
+% scrsz = get(0,'ScreenSize');
+% figure('Color',[1 1 1],'renderer','zbuffer', 'Position',[scrsz(3)/2+200 scrsz(4)/2+500 scrsz(3)/4 scrsz(4)/2])
+% mesh(X,Y,Z)
+% axis equal
+% axis([-2 2 -2 2 -2 2])
+
 % end
 % 
 % Cnm=0;

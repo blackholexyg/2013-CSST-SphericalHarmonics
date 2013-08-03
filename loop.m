@@ -1,8 +1,8 @@
 clc,clear;
 
-global num;
-global filepath;
 global filelist;
+global filepath;
+global filename;
 
 filepath='~/Data/VirusTest/';
 
@@ -19,7 +19,9 @@ end
 
 fclose(fid);
 
-for num=1:2 %length(filelist)
+for num=1:1 %length(filelist)
+    
+    filename=filelist{num}  %#ok<NOPTS>
     % Do loop operations
     
     % Preprocessing:
