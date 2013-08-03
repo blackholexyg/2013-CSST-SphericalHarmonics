@@ -9,44 +9,46 @@ global filename;
 filepath='~/Data/Debug/';
 filename='T9_3';
 
-% SHModifyVtk;
+%% Temp Activity
+% 
+SHReadVtk;
+SHModifyVtk;
 
-%% Expand Here
+%% Check SHSum
 
-inpath = [filepath 'output/'];
-infile = [filename '_new_r'];
-outpath = [filepath 'output/'];
-outfile = [filename '_debug'];
-
-load([inpath infile]);
-
-[Cnm,Snm]=SHExpand(x,y,z,r,theta,lambda,NUM_TRI,TRI,6);
-
-savefile=[ outpath outfile ];
-save(savefile,'Cnm','Snm');
-
-%% Check the transformation
-% test_x=zeros(size(x));
-% test_y=zeros(size(y));
-% test_z=zeros(size(z));
+% inpath = [filepath 'output/'];
+% infile = [filename '_new_r'];
+% outpath = [filepath 'output/'];
+% outfile = [filename '_debug'];
+% 
+% load([inpath infile]);
+% 
+% Cnm=[1 2 3 4 5 6 7 8 9];
+% Snm=zeros( size(Cnm) );
+% 
+% r_calc=zeros( size(r) );
 % 
 % for i=1:NUM_NODES
-%     test_z(i)=r(i)*cos(theta(i));
-%     test_x(i)=r(i)*sin(theta(i))*cos(lambda(i));
-%     test_y(i)=r(i)*sin(theta(i))*sin(lambda(i));
-% end
-
-%% some debug code
-
-% r=zeros(size(lambda));
-% test_n=5;
-% test_m=3;
-% 
-% for i=1:NUM_NODES
-%     r(i)=cos(test_m*lambda(i) ) .*SHPnm(test_n,test_m,theta(i) );
+%     r_calc(i)=SHSum( Cnm,Snm,theta(i), lambda(i));
 % end
 % 
+% fid=fopen('x.txt','w');
+% fprintf(fid,'%f\n',r_calc);
+% fclose(fid);
 
+%% Expand
+
+% inpath = [filepath 'output/'];
+% infile = [filename '_new_r'];
+% outpath = [filepath 'output/'];
+% outfile = [filename '_debug'];
+% 
+% load([inpath infile]);
+% 
+% [Cnm,Snm]=SHExpand(x,y,z,r,theta,lambda,NUM_TRI,TRI,6);
+% 
+% savefile=[ outpath outfile ];
+% save(savefile,'Cnm','Snm');
 
 %% plot the shape
 % 
@@ -82,6 +84,7 @@ save(savefile,'Cnm','Snm');
 % mesh(X,Y,Z)
 % axis equal
 % axis([-2 2 -2 2 -2 2])
+%
 
 %% 7/29
 % filepath='~/Data/VirusTest/';
@@ -166,16 +169,14 @@ save(savefile,'Cnm','Snm');
 % 
 % [cc,resnorm,residual] = lsqcurvefit(@SHFitSum,x0,Xdata,Ydata,lb,ub,ff);
 
-%% Visualization
+%% Visualization Nodes
 % visualize by plot
 
 % plot3(x,y,z,'.');
 % axis equal
 
+%% Check the transformation from spherical to cartesian
 
-
-
-%% Validating the transformation from spherical to cartesian
 % clc
 % 
 % x=1;
@@ -196,6 +197,19 @@ save(savefile,'Cnm','Snm');
 % theta/pi*180
 % lambda/pi*180
 
+%% Check the transformation
+
+% Everythings seems good
+
+% test_x=zeros(size(x));
+% test_y=zeros(size(y));
+% test_z=zeros(size(z));
+% 
+% for i=1:NUM_NODES
+%     test_z(i)=r(i)*cos(theta(i));
+%     test_x(i)=r(i)*sin(theta(i))*cos(lambda(i));
+%     test_y(i)=r(i)*sin(theta(i))*sin(lambda(i));
+% end
 
 %% Validating the bases
 

@@ -29,8 +29,8 @@ for i=1:NUM_NODES
     S6=6 * cos( 2 *lambda(i) ) .*SHPnm( 2 , 2 ,theta(i) );
     S7=7 * cos( 0 *lambda(i) ) .*SHPnm( 3 , 0 ,theta(i) );
     S8=8 * cos( 1 *lambda(i) ) .*SHPnm( 3 , 1 ,theta(i) );
-    S9=9 * cos( 3 *lambda(i) ) .*SHPnm( 3 , 2 ,theta(i) );
-    r(i)=S1+S2+S3+S4+S5+S6+S7+S8+S9;
+    S9=9 * cos( 2 *lambda(i) ) .*SHPnm( 3 , 2 ,theta(i) );
+    r(i)=S1+S2+S3+S4+S5+S6+S7+S8+S9;    
 end
 
 %% Rotate Coordinates
