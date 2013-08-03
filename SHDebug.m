@@ -11,8 +11,8 @@ filename='T9_3';
 
 %% Temp Activity
 % 
-SHReadVtk;
-SHModifyVtk;
+% SHReadVtk;
+% SHModifyVtk;
 
 %% Check SHSum
 
@@ -38,17 +38,17 @@ SHModifyVtk;
 
 %% Expand
 
-% inpath = [filepath 'output/'];
-% infile = [filename '_new_r'];
-% outpath = [filepath 'output/'];
-% outfile = [filename '_debug'];
-% 
-% load([inpath infile]);
-% 
-% [Cnm,Snm]=SHExpand(x,y,z,r,theta,lambda,NUM_TRI,TRI,6);
-% 
-% savefile=[ outpath outfile ];
-% save(savefile,'Cnm','Snm');
+inpath = [filepath 'output/'];
+infile = [filename '_new_r'];
+outpath = [filepath 'output/'];
+outfile = [filename '_expand_debug'];
+
+load([inpath infile]);
+
+[Cnm,Snm]=SHExpand(x,y,z,r,theta,lambda,NUM_TRI,TRI,9);
+
+savefile=[ outpath outfile ];
+save(savefile,'Cnm','Snm');
 
 %% plot the shape
 % 

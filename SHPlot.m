@@ -1,35 +1,43 @@
 %clc;
 clear;close all;
 
-global num;
-global filelist;
 global filepath;
+global filename;
+
+% Set file path and name
+% filepath='~/Data/';
+% filename='';
+
+filepath='~/Data/Debug/';
+filename='T9_3';
+
+inpath = [filepath 'output/'];
+infile = [filename '_debug'];
+outpath = [filepath 'plot/'];
+outfile = [filename '_plot'];
+
+% load data
+load([inpath infile]);
 
 %% Plot Coefficients
 
-filename=filelist{num}  %#ok<NOPTS>
-
-load([filepath filename '_expand2']);
-
 % output filename
-outfile=filename;
-outfile(outfile=='_')='-';
-range=0.3;
+plottitle=filename;
+plottitle(plottitle=='_')='-';
+range=10;
 
 h=figure;
 plot(Cnm(2:end),'*');
-t=title([ outfile ' Cnm'],'FontSize',30);
+t=title([ plottitle '-Cnm'],'FontSize',30);
 axis([0 60 -range range])
 
-print(h,'-dpng',[ filepath outfile '_Cnm' '.png'])
+print(h,'-dpng',[ outpath outfile '_Cnm' '.png'])
 close(h)
 
 h=figure;
 plot(Snm,'*');
-t=title([ outfile ' Snm'],'FontSize',30);
+t=title([ plottitle '-Snm'],'FontSize',30);
 axis([0 60 -range range])
 
-print(h,'-dpng',[ filepath outfile '_Snm' '.png'])
+print(h,'-dpng',[ outpath outfile '_Snm' '.png'])
 close(h)
-
-
